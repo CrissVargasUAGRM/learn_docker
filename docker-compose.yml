@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  dbmysql:
+    image: mysql
+    container_name: project-db-mysql
+    ports:
+      - 3306:3306
+    volumes:
+      - ./databases/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
